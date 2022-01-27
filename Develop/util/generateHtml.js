@@ -1,3 +1,5 @@
+const inquirer = require('inquirer');
+
 // create the team
 const generateTeam = team => {
 
@@ -116,3 +118,63 @@ module.exports = team => {
 </html>
     `;
 };
+
+const whatRole = () => {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "What's your name?",
+            name: "name",
+        },
+        {
+            type: "list",
+            message: "What's your role?",
+            choices: ['Intern', 'Engineer', 'Manager'],
+            name: "roles",
+        },
+        {
+            type: "input",
+            message: "What's your ID?",
+            name: "id",
+        }]) 
+        .then((response) => console.log("Yay whatRole works!")
+        );
+    }
+
+const internInput = () => {
+    return inquirer.prompt([
+        {
+        type: "input",
+        message: "What school are you studying at?",
+        name: "school",
+        }]) 
+        .then((response) => console.log("Yay internInput works!")
+        );
+    }
+
+const engineerInput = () => {
+    return inquirer.prompt([
+        {
+        type: "input",
+        message: "What is your github username?",
+        name: "github",
+        }]) 
+        .then((response) => console.log("Yay engineerInput works!")
+        );
+    }
+
+const managerInput = () => {
+    return inquirer.prompt(
+            [
+                {
+                type: "input",
+                message: "What is your office number?",
+                name: "office",
+                }
+            ]
+        ) 
+        .then((response) => console.log("Yay managerInput works!")
+        );
+    }
+
+whatRole();
