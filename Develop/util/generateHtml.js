@@ -1,6 +1,11 @@
 const inquirer = require('inquirer');
+const fs = require('fs');
+const Manager = require("../lib/Manager");
+const Intern = require("../lib/Intern");
+const Engineer = require("../lib/Engineer");
 
 // create the team
+let teamLineup = [];
 const generateTeam = team => {
 
     // create the manager html
@@ -25,7 +30,7 @@ const generateTeam = team => {
     // create the html for engineers
     const generateEngineer = engineer => {
         return `
-        <div class="card employee-card">
+<div class="card employee-card">
     <div class="card-header">
         <h2 class="card-title">${engineer.getName()}</h2>
         <h3 class="card-title"><i class="fas fa-glasses mr-2"></i>${engineer.getRole()}</h3>
@@ -83,9 +88,8 @@ const generateTeam = team => {
 
 // export function to generate entire page
 module.exports = team => {
-
     return `
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -119,62 +123,104 @@ module.exports = team => {
     `;
 };
 
-const whatRole = () => {
+const startTeam = () => {
     return inquirer.prompt([
         {
             type: "input",
-            message: "What's your name?",
+            message: "What's your team manager's name?",
             name: "name",
         },
         {
-            type: "list",
-            message: "What's your role?",
-            choices: ['Intern', 'Engineer', 'Manager'],
-            name: "roles",
+            type: "input",
+            message: "What's their ID?",
+            name: "id",
         },
         {
             type: "input",
-            message: "What's your ID?",
-            name: "id",
-        }]) 
-        .then((response) => console.log("Yay whatRole works!")
-        );
+            message: "What's their email?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "What's your their office number?",
+            name: "office",
+        }
+    ])
+        .then((input) => {
+            console.log("It works!!!");
+            const newMember = new Manager(input.name, input.id, input.email, input.office);
+            teamLineup.push(newMember);
+            console.log(JSON.stringify(teamLineup));
+            addMember();
+        }) 
     }
 
-const internInput = () => {
+const addMember = () => {
     return inquirer.prompt([
         {
-        type: "input",
-        message: "What school are you studying at?",
-        name: "school",
-        }]) 
-        .then((response) => console.log("Yay internInput works!")
-        );
+            type: "list",
+            message: "Add an intern or engineer to the team? Or all done?",
+            choices: ["Add an intern", "Add an engineer", "All done!"],
+            name: "addMore",
+        }
+    ]) 
+        .then((input) => {
+            switch(input.addMore) {
+                case "Add an intern":
+                    addIntern();
+                    break;
+                case "Add an engineer":
+                    addEngineer();
+                    break;
+                case "All done!":
+                    // generate html function
+                    console.log("all done!");
+                    break;
+            }
+        });
     }
 
-const engineerInput = () => {
+const addIntern = () => {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "What's your intern's name?",
+            name: "name",
+        },
+        {
+            type: "input",
+            message: "What's their ID?",
+            name: "id",
+        },
+        {
+            type: "input",
+            message: "What's their email?",
+            name: "email",
+        },
+        {
+            type: "input",
+            message: "What school are you studying at?",
+            name: "school",
+        }
+    ]) 
+        .then((input) => {
+            const newMember = new Intern(input.name, input.id, input.email, input.school);
+            teamLineup.push(newMember);
+            console.log(JSON.stringify(teamLineup));
+            addMember();
+        })
+    }
+
+const addEngineer = () => {
     return inquirer.prompt([
         {
         type: "input",
         message: "What is your github username?",
         name: "github",
         }]) 
-        .then((response) => console.log("Yay engineerInput works!")
+        .then((response) => console.log("Yay addEngineer works!")
         );
     }
 
-const managerInput = () => {
-    return inquirer.prompt(
-            [
-                {
-                type: "input",
-                message: "What is your office number?",
-                name: "office",
-                }
-            ]
-        ) 
-        .then((response) => console.log("Yay managerInput works!")
-        );
-    }
+startTeam();
 
-whatRole();
