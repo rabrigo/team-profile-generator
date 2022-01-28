@@ -5,7 +5,108 @@ const Intern = require("../lib/Intern");
 const Engineer = require("../lib/Engineer");
 
 // create the team
-let teamLineup = [];
+// let teamLineup = [];
+
+
+// const startTeam = () => {
+//     return inquirer.prompt([
+//         {
+//             type: "input",
+//             message: "What's your team manager's name?",
+//             name: "name",
+//         },
+//         {
+//             type: "input",
+//             message: "What's their ID?",
+//             name: "id",
+//         },
+//         {
+//             type: "input",
+//             message: "What's their email?",
+//             name: "email",
+//         },
+//         {
+//             type: "input",
+//             message: "What's your their office number?",
+//             name: "office",
+//         }
+//     ])
+//         .then((input) => {
+//             console.log("It works!!!");
+//             const newMember = new Manager(input.name, input.id, input.email, input.office);
+//             teamLineup.push(newMember);
+//             console.log(JSON.stringify(teamLineup));
+//             addMember();
+//         }) 
+//     }
+
+// const addMember = () => {
+//     return inquirer.prompt([
+//         {
+//             type: "list",
+//             message: "Add an intern or engineer to the team? Or all done?",
+//             choices: ["Add an intern", "Add an engineer", "All done!"],
+//             name: "addMore",
+//         }
+//     ]) 
+//         .then((input) => {
+//             switch(input.addMore) {
+//                 case "Add an intern":
+//                     addIntern();
+//                     break;
+//                 case "Add an engineer":
+//                     addEngineer();
+//                     break;
+//                 case "All done!":
+//                     // generate html function
+//                     console.log("all done!");
+//                     break;
+//             }
+//         });
+//     }
+
+// const addIntern = () => {
+//     return inquirer.prompt([
+//         {
+//             type: "input",
+//             message: "What's your intern's name?",
+//             name: "name",
+//         },
+//         {
+//             type: "input",
+//             message: "What's their ID?",
+//             name: "id",
+//         },
+//         {
+//             type: "input",
+//             message: "What's their email?",
+//             name: "email",
+//         },
+//         {
+//             type: "input",
+//             message: "What school are you studying at?",
+//             name: "school",
+//         }
+//     ]) 
+//         .then((input) => {
+//             const newMember = new Intern(input.name, input.id, input.email, input.school);
+//             teamLineup.push(newMember);
+//             console.log(JSON.stringify(teamLineup));
+//             addMember();
+//         })
+//     }
+
+// const addEngineer = () => {
+//     return inquirer.prompt([
+//         {
+//             type: "input",
+//             message: "What is your github username?",
+//             name: "github",
+//         }]) 
+//             .then((response) => console.log("Yay addEngineer works!")
+//         );
+// }
+
 const generateTeam = team => {
 
     // create the manager html
@@ -123,104 +224,6 @@ module.exports = team => {
     `;
 };
 
-const startTeam = () => {
-    return inquirer.prompt([
-        {
-            type: "input",
-            message: "What's your team manager's name?",
-            name: "name",
-        },
-        {
-            type: "input",
-            message: "What's their ID?",
-            name: "id",
-        },
-        {
-            type: "input",
-            message: "What's their email?",
-            name: "email",
-        },
-        {
-            type: "input",
-            message: "What's your their office number?",
-            name: "office",
-        }
-    ])
-        .then((input) => {
-            console.log("It works!!!");
-            const newMember = new Manager(input.name, input.id, input.email, input.office);
-            teamLineup.push(newMember);
-            console.log(JSON.stringify(teamLineup));
-            addMember();
-        }) 
-    }
-
-const addMember = () => {
-    return inquirer.prompt([
-        {
-            type: "list",
-            message: "Add an intern or engineer to the team? Or all done?",
-            choices: ["Add an intern", "Add an engineer", "All done!"],
-            name: "addMore",
-        }
-    ]) 
-        .then((input) => {
-            switch(input.addMore) {
-                case "Add an intern":
-                    addIntern();
-                    break;
-                case "Add an engineer":
-                    addEngineer();
-                    break;
-                case "All done!":
-                    // generate html function
-                    console.log("all done!");
-                    break;
-            }
-        });
-    }
-
-const addIntern = () => {
-    return inquirer.prompt([
-        {
-            type: "input",
-            message: "What's your intern's name?",
-            name: "name",
-        },
-        {
-            type: "input",
-            message: "What's their ID?",
-            name: "id",
-        },
-        {
-            type: "input",
-            message: "What's their email?",
-            name: "email",
-        },
-        {
-            type: "input",
-            message: "What school are you studying at?",
-            name: "school",
-        }
-    ]) 
-        .then((input) => {
-            const newMember = new Intern(input.name, input.id, input.email, input.school);
-            teamLineup.push(newMember);
-            console.log(JSON.stringify(teamLineup));
-            addMember();
-        })
-    }
-
-const addEngineer = () => {
-    return inquirer.prompt([
-        {
-        type: "input",
-        message: "What is your github username?",
-        name: "github",
-        }]) 
-        .then((response) => console.log("Yay addEngineer works!")
-        );
-    }
-
-startTeam();
-
+// const init = async () => {
+//     startTeam();
+// }
