@@ -26,17 +26,17 @@ Node.js installation required.
 
 Open the folder contained the index.js file in your command line interface. Use the command, "node index.js". Answer the questions for each of the members. 
 
-![screenshot](./Assets/screen1.jpg)
+![screenshot](./Assets/screen1.png)
 
 Proceed to add another member to the team or exit the application by choosing "I'm all done!".
 
-![screenshot](./Assets/screen2.jpg)
+![screenshot](./Assets/screen2.png)
 
-![screenshot](./Assets/screen3.jpg)
+![screenshot](./Assets/screen3.png)
 
  An index.html file will generate in the root folder with team members provided in a formatted web page.
 
- ![screenshot](./Assets/screen4.jpg)
+ ![screenshot](./Assets/screen4.png)
 
- ![screenshot](./Assets/screen5.jpg)
+ ![screenshot](./Assets/screen5.png)
 
