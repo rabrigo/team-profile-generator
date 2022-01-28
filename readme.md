@@ -24,6 +24,8 @@ Node.js installation required.
 
 ## Usage
 
+Demo video to see the generator in action: https://vimeo.com/670988027/aa62d6dd6b
+
 Open the folder contained the index.js file in your command line interface. Use the command, "node index.js". Answer the questions for each of the members. 
 
 ![screenshot](./Assets/screen1.png)
